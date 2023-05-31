@@ -13,3 +13,6 @@ def split(sp = " ") -> FunctionalContainer:
 
 def join(sp = "") -> FunctionalContainer:
     return FunctionalContainer(lambda x: sp.join(x))
+
+def apply(fn) -> FunctionalContainer:
+    return FunctionalContainer(lambda x: fn(x))
