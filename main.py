@@ -1,14 +1,21 @@
 from Funpy import FunctionalContainer as FC
+import Funpy.functions as F
 
-l = FC([1, 2, 3, 4, 5])
-
-
-def fmap(fn) -> FC:
-    return FC(lambda x: list(map(fn, x)))
-
+# take a list as input and print evens
+print(
+    " ".join(
+        map(str,
+            filter(lambda x: x % 2 == 0,
+                   map(int,
+                       input("enter a list of numbers:").split())))))
 
 (
-    l
-    | fmap(lambda x: x**2)
+    FC("enter a list of numbers: ")
+    | FC(input)
+    | F.split()
+    | F.map(int)
+    | F.filter(lambda x: x % 2 == 0)
+    | F.map(str)
+    | F.join(" ")
     | FC(print)
 )
